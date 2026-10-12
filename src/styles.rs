@@ -62,7 +62,6 @@ impl C {
     pub const SURFACE_LOW: Color = hex(0x191C20);
     pub const SURFACE_CONTAINER: Color = hex(0x1D2024);
     pub const SURFACE_HIGH: Color = hex(0x282A2F);
-    pub const SURFACE_HIGHEST: Color = hex(0x33343A);
 
     pub const ON_SURFACE: Color = hex(0xE2E2E9);
     pub const ON_SURFACE_VARIANT: Color = hex(0xC4C6CF);
@@ -206,40 +205,6 @@ pub fn tonal(_theme: &Theme, status: Status) -> button::Style {
             C::ON_SECONDARY_CONTAINER,
             pill(),
         ),
-    }
-}
-
-/// M3 outlined button.
-pub fn outlined(_theme: &Theme, status: Status) -> button::Style {
-    let base_border = Border {
-color: C::OUTLINE,
-        width: 1.0,
-        radius: pill().radius,
-    };
-    match status {
-        Status::Disabled => bs(
-            None,
-            dis_fg(),
-            Border {
-                color: Color {
-                    a: 0.12,
-                    ..C::ON_SURFACE
-                },
-                width: 1.0,
-                radius: pill().radius,
-            },
-        ),
-        Status::Hovered => bs(
-            Some(state_layer(C::SURFACE, C::PRIMARY, 0.08)),
-            C::PRIMARY,
-            base_border,
-        ),
-        Status::Pressed => bs(
-            Some(state_layer(C::SURFACE, C::PRIMARY, 0.10)),
-            C::PRIMARY,
-            base_border,
-        ),
-        _ => bs(None, C::PRIMARY, base_border),
     }
 }
 

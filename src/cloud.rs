@@ -229,8 +229,6 @@ pub struct Device {
 #[derive(Debug, Clone, Deserialize, Default)]
 pub struct DeviceGroup {
     #[serde(default)]
-    pub current_router: bool,
-    #[serde(default)]
     pub devices: Vec<Device>,
 }
 
@@ -321,12 +319,6 @@ pub struct GameModeSetting {
 
 #[derive(Debug, Clone, Deserialize, Default)]
 pub struct Status {
-    #[serde(default)]
-    pub acc_mode: String,
-    #[serde(default)]
-    pub name: String,
-    #[serde(default)]
-    pub sn: String,
     #[serde(default)]
     pub game_mode_setting: GameModeSetting,
 }

@@ -37,7 +37,7 @@ fn main() -> iced::Result {
             std::backtrace::Backtrace::force_capture(),
         );
         let path = std::env::temp_dir().join("uugui-panic.log");
-        let mut log = std::fs::OpenOptions::new()
+        let log = std::fs::OpenOptions::new()
             .create(true)
             .append(true)
             .open(&path)

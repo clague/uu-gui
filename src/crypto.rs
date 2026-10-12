@@ -21,12 +21,6 @@ pub fn md5_hex(data: &[u8]) -> String {
     hex_lower(&h.finalize())
 }
 
-/// The UU request signing key: MD5 of the *hex string* of the APK signing cert.
-/// (Not the certificate fingerprint.)
-pub fn signing_key(cert_der: &[u8]) -> String {
-    md5_hex(hex_lower(cert_der).as_bytes())
-}
-
 /// AES-128/ECB/PKCS7 encrypt (used for UU `/app/*` request bodies).
 pub fn aes_ecb_encrypt(key: &[u8], plain: &[u8]) -> Vec<u8> {
     let cipher = Aes128::new_from_slice(&key[..16]).expect("key");
