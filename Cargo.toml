@@ -1,0 +1,33 @@
+[package]
+name = "uugui"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+iced = { path = "vendor/iced-src", default-features = false, features = [
+    "tiny-skia",            # CPU renderer (no wgpu: it busy-spins a core on this system)
+    "crisp",                # pixel-snapped edges: faster AA-light rasterization
+    "thread-pool",          # async-free futures executor (see PATCHES.md; one std working thread per network call)
+    "image-without-codecs", # image widget; codecs come from our own image dep
+] }
+ureq = { version = "2", default-features = false, features = ["tls"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg"] }
+md-5 = "0.10"
+aes = "0.8"
+cbc = "0.1"
+base64 = "0.22"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Local fork of the winit rev pinned by iced (see ../winit-src/PATCHES.md):
+# the caption must not be reserved in the outer-rect computation when the
+# app strips the title bar itself (WM_NCCALCSIZE).
+[patch."https://github.com/iced-rs/winit.git"]
+winit = { path = "vendor/winit-src" }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = "symbols"
+panic = "abort"
