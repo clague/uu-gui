@@ -2,7 +2,8 @@
 
 中文 | [English](README.en.md)
 
-第三方网易 UU（uu 加速器） PC 控制面板，通过**锐捷 Reyee 路由器**下发加速，Rust +
+本工具是网易 UU「主机加速」的**第三方 PC 端**（PC 版控制面板）——在电脑上管理
+同一个局域网内、通过**锐捷 Reyee 路由器**接入的主机设备加速。Rust +
 [iced](https://github.com/iced-rs/iced) 编写，`tiny-skia` CPU 渲染（无 GPU 驱动依赖）。
 
 > ⚠️ **免责声明** — 本工具与网易 / 锐捷的**私有逆向协议**通信（`router.uu.163.com`

@@ -2,8 +2,9 @@
 
 [中文](README.md) | English
 
-A third-party desktop UI for controlling NetEase UU (网易UU) game
-accelerator on a **Reyee (锐捷) router**, written in Rust with
+The unofficial **PC client for NetEase UU's "console acceleration"**
+(UU主机加速) — manage acceleration for game consoles and other devices
+behind your **Reyee (锐捷) router**, from your PC. Written in Rust with
 [iced](https://github.com/iced-rs/iced) and the `tiny-skia` CPU renderer
 (no GPU driver dependency).
 
