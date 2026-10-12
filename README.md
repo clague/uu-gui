@@ -1,30 +1,25 @@
 # uu-gui
 
-A third-party desktop UI for controlling NetEase UU (网易UU) game
-accelerator on a **Reyee (锐捷) router**, written in Rust with
-[iced](https://github.com/iced-rs/iced) and the `tiny-skia` CPU renderer
-(no GPU driver dependency).
+中文 | [English](README.en.md)
 
-> ⚠️ **Disclaimer** — this tool talks to NetEase / Reyee **private,
-> reverse-engineered APIs** (`router.uu.163.com` and the router's local
-> `luci` endpoint), using header/encryption constants extracted from the
-> official UU Android app. It is for personal use on your own account and
-> your own router. Using it may violate the respective EULAs; API changes
-> on the service side may break it at any time. No affiliation with
-> NetEase or Ruijie.
+第三方网易 UU（uu 加速器） PC 控制面板，通过**锐捷 Reyee 路由器**下发加速，Rust +
+[iced](https://github.com/iced-rs/iced) 编写，`tiny-skia` CPU 渲染（无 GPU 驱动依赖）。
 
-## Features
+> ⚠️ **免责声明** — 本工具与网易 / 锐捷的**私有逆向协议**通信（`router.uu.163.com`
+> 与路由器本地 `luci` 接口），使用了从 UU 官方 Android App 提取的请求头 / 加密
+> 常量。仅供个人在自己的账号与自己的路由器上使用。使用它可能违反相应
+> EULA；服务端接口变更可能随时使其失效。与网易 / 锐捷无任何关联。
 
-- **Device acceleration** — sign in with your UU account (SMS code), list
-  every device on your router, pick game / zone / server, start / stop
-  acceleration, per-device auto-acceleration toggle.
-- **Router plugin switch** — log into the Reyee router locally (currently
-  the X60 Pro family) and toggle the embedded UU plugin master switch.
-- Frameless M3 dark window with native resize borders, DWM shadow and
-  Win11 rounded corners; custom title bar drawn in-app.
-- No GPU requirement: the whole UI renders on the CPU (tiny-skia).
+## 功能
 
-## Build
+- **设备加速** — UU 账号短信验证码登录 → 列出路由器上全部设备 → 选择游戏 /
+  大区 / 服务器 → 开始 / 停止加速 → 每设备"自动加速"开关。
+- **路由器插件开关** — 本机登录锐捷路由器管理端（当前适配 X60 Pro 系列），
+  切换其内置 UU 插件总开关。
+- 无边框 M3 暗色窗口，保留原生缩放边框、DWM 阴影与 Win11 圆角；标题栏在应用内自绘。
+- 无 GPU 要求：整个界面 CPU 渲染（tiny-skia）。
+
+## 构建
 
 ```
 rustup update stable
@@ -32,23 +27,21 @@ cargo build --release
 target\release\uugui.exe
 ```
 
-The build is self-contained: the local iced/winit forks the project
-relies on are vendored under [`vendor/iced-src`](vendor/iced-src) and
-[`vendor/winit-src`](vendor/winit-src) (see the `PATCHES.md` inside each
-for the exact diffs and the reasons).
+构建完全自包含：本仓库将项目依赖的 iced / winit 本地 fork 内置在
+[`vendor/iced-src`](vendor/iced-src) 与 [`vendor/winit-src`](vendor/winit-src)
+（每个目录里的 `PATCHES.md` 记录了修改内容与原因）。
 
-## Privacy notes
+## 隐私说明
 
-Your settings live in `~/.uu-gui/config.json` **on your own machine** —
-nothing is uploaded anywhere by this repository. The file stores your
-router address, admin password (base64-encoded, not encrypted), UU phone
-number, session token and nickname. Don't commit or share that file.
+配置保存在你自己机器上的 `~/.uu-gui/config.json` — 本仓库不会上传任何数据。
+该文件存有路由器地址、管理密码（base64 编码，非加密）、UU 手机号、会话 token
+与昵称。不要提交或分享该文件。
 
-## Structure
+## 目录结构
 
 ```
-src/            application (Elm-style iced program)
-vendor/iced-src rust fork of iced (perf + window patches, see PATCHES.md)
-vendor/winit-src rust fork of winit (caption-rect fix, see PATCHES.md)
-assets/         Font Awesome (brands) icon font, CC BY 4.0
+src/            应用本体（Elm 风格 iced 程序）
+vendor/iced-src iced 的本地 fork（性能 + 窗口补丁，见 PATCHES.md）
+vendor/winit-src winit 的本地 fork（标题栏矩形修正，见 PATCHES.md）
+assets/         Font Awesome (brands) 图标字体，CC BY 4.0
 ```
