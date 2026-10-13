@@ -20,6 +20,16 @@
 - 无边框 M3 暗色窗口，保留原生缩放边框、DWM 阴影与 Win11 圆角；标题栏在应用内自绘。
 - 无 GPU 要求：整个界面 CPU 渲染（tiny-skia）。
 
+## 截图
+
+**设备列表 / 加速管理**
+
+![设备列表](assets/screenshots/device-list.png)
+
+**路由器插件开关**
+
+![路由器插件开关](assets/screenshots/router-plugin.png)
+
 ## 构建
 
 ```

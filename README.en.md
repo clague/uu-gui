@@ -27,6 +27,16 @@ behind your **Reyee (锐捷) router**, from your PC. Written in Rust with
   Win11 rounded corners; custom title bar drawn in-app.
 - No GPU requirement: the whole UI renders on the CPU (tiny-skia).
 
+## Screenshots
+
+**Device list / acceleration**
+
+![Device list](assets/screenshots/device-list.png)
+
+**Router plugin switch**
+
+![Router plugin switch](assets/screenshots/router-plugin.png)
+
 ## Build
 
 ```
